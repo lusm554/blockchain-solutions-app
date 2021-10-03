@@ -1,1 +1,18 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: bc_postgres 
+    env_file: 
+      - ./config/.env
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+      - ./.docker/setup.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:
 
