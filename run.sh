@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f docker-compose.yml -p django-app up -d --build
+docker-compose -f docker-compose.yml -p flask-app up -d --build
