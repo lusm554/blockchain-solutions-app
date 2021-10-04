@@ -5,7 +5,7 @@
 * [How to run](#how-to-run)
 
 ## About
-In short - django app for work with BCS Chain.
+In short - ~~django~~ flask app for work with BCS Chain.
 
 ## How to run
 1. Clone repo
