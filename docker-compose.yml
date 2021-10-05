@@ -1,5 +1,26 @@
 version: "3.9"
 services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bc_web_app
+    environment:
+      - FLASK_ENV=development
+      #- FLASK_ENV=production
+    env_file:
+      - config/.env
+    ports:
+      - 80:80
+    volumes:
+      - ./wait-for-postgres.sh:/wait-for-postgres.sh
+      - ./src:/src
+    depends_on:
+      - postgres
+    command: sh ../wait-for-postgres.sh postgres -- flask run
+    networks:
+      - share-network
+
   postgres:
     image: postgres:13-alpine
     container_name: bc_postgres 
@@ -12,6 +33,11 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data/pgdata
       - ./.docker/setup.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - share-network
+networks:
+  share-network:
+    driver: bridge
 
 volumes:
   pgdata:
