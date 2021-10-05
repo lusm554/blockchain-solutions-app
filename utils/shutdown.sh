@@ -1,4 +1,4 @@
 #!/bin/bash
-docker-compose -p django-app down
+docker-compose -p flask-app down
 rm -rf pgdata
 docker volume prune --force
