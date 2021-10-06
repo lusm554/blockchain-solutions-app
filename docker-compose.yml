@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: bc_web_app
     environment:
-      - FLASK_ENV=development
-      #- FLASK_ENV=production
+      QUART_ENV: development
+      #QUART_ENV: production
     env_file:
       - config/.env
     ports:
@@ -17,10 +17,9 @@ services:
       - ./src:/src
     depends_on:
       - postgres
-    command: sh ../wait-for-postgres.sh postgres -- flask run
+    command: sh ../wait-for-postgres.sh postgres
     networks:
-      - share-network
-
+     - share-network
   postgres:
     image: postgres:13-alpine
     container_name: bc_postgres 
@@ -35,10 +34,10 @@ services:
       - ./.docker/setup.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - share-network
+      
 networks:
   share-network:
     driver: bridge
-
 volumes:
   pgdata:
 
