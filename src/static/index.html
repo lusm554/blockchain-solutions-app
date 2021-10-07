@@ -7,10 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCS Chain Transactions</title>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:700" rel="stylesheet">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 </head>
 <body>
-    <div class="buttons-coll">
+    <div class="buttons-coll" id="send_btn">
         <button class="custom-btn btn-1">Send transaction</button>
-    </div>      
+    </div>
+    <script>
+        const elem = (id) => document.getElementById(id)
+        elem('send_btn').addEventListener('click', send_transaction)
+        function send_transaction() {
+            alert('transaction...')
+        }
+    </script>
 </body>
 </html>
