@@ -6,3 +6,6 @@ pgdata
 
 # Python
 __pycache__
+
+# VIM
+*.swp
