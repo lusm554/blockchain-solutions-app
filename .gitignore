@@ -3,3 +3,6 @@
 
 # Docker containers data:
 pgdata
+
+# Python
+__pycache__
