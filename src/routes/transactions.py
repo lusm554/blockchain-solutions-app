@@ -1,11 +1,14 @@
+from models.transactions import TransactionsDAO 
 from quart import (
     Blueprint,
-    Response,
+    Response
 )
 
-router = Blueprint('transaction', __name__, url_prefix='/')
+router = Blueprint('transaction', __name__, url_prefix='/tx')
+trs = TransactionsDAO()
 
-@router.route('/')
+
+@router.route('/test')
 async def test():
     try:
         return Response('test route', status=200)
